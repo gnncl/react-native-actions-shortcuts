@@ -1,4 +1,4 @@
-import { NativeModules, EventSubscriptionVendor } from 'react-native';
+import { NativeModules/*, EventSubscriptionVendor*/, NativeModule } from 'react-native';
 
 export interface ShortcutItem {
   /**
@@ -34,26 +34,18 @@ export interface ShortcutItem {
   data?: any;
 }
 
-interface ShortcutsType extends EventSubscriptionVendor {
-  /**
-   * Set the shortcut items.
-   * @returns a promise with the items that were set
-   */
+interface ShortcutsType extends NativeModule /* EventSubscriptionVendor */ {
+  // Set the shortcut items.
+  // @returns a promise with the items that were set
   setShortcuts(items: ShortcutItem[]): Promise<ShortcutItem[]>;
 
-  /**
-   * @returns a promise with the items that were set
-   */
+  // @returns a promise with the items that were set
   getShortcuts(): Promise<ShortcutItem[]>;
 
-  /**
-   * Removes all the shortcut items
-   */
+  // Removes all the shortcut items
   clearShortcuts(): void;
 
-  /**
-   * Gets the initial shortcut the app was launched with
-   */
+  // Gets the initial shortcut the app was launched with
   getInitialShortcut(): Promise<ShortcutItem | null>;
 }
 
