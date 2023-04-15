@@ -40,7 +40,7 @@ export default function App() {
     ShortcutsEmitter.addListener('onShortcutItemPressed', listener);
 
     return () => {
-      ShortcutsEmitter.removeListener('onShortcutItemPressed', listener);
+      ShortcutsEmitter.removeAllListeners('onShortcutItemPressed');
     };
   }, [ShortcutsEmitter]);
 
